@@ -29,7 +29,7 @@ imagenet/
 │   │       └──*.JPEG * n
 ```  
 
-If the filename is not 'train' and 'val', like 'ILSVRC2012_img_train' and 'ILSVRC2012_img_val',  
+If the foldername is not 'train' and 'val', like 'ILSVRC2012_img_train' and 'ILSVRC2012_img_val',  
 please try to rewrite the str 'train' and 'val' in the .py file  utils/dataloaders.py in line 95 and line 115  
 
 
