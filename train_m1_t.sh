@@ -1,7 +1,7 @@
 export DATA_PATH=$1/imagenet
 export OUTPUT_PATH=$2/m1
 
-CUDA_VISIBLE_DEVICES=4,5,6,7 python3 -W ignore /workspace/micronet/main.py --arch MicroNet -d $DATA_PATH --epochs 600 --lr-decay cos --lr 0.02 --wd 3e-5 \
+CUDA_VISIBLE_DEVICES=0,1,2,3 python3 -W ignore /workspace/micronet/main.py --arch MicroNet -d $DATA_PATH --epochs 600 --lr-decay cos --lr 0.02 --wd 3e-5 \
                                                          -c $OUTPUT_PATH -j 48 --input-size 224 --label-smoothing 0.0 -b 512 \
                                                          MODEL.MICRONETS.BLOCK DYMicroBlock \
                                                          MODEL.MICRONETS.NET_CONFIG msnx_dy6_exp6_6M_221 \
