@@ -39,11 +39,17 @@ please try to rewrite the str 'train' and 'val' in the .py file  utils/dataloade
 Update the micronet.py, using the block_a, block_b, block_c to build the model as it in the paper.
 
 
-## 2021/11/03
+## 2021/11/02
 
 Our research shows that using dali-cpu may not help increasing the speed,  
 meanwhile using dali-gpu may run out of memory.  
 So updata the utils/dataloaders.py, using pytorch_only and cut the 'if' branch in main.py.
+
+
+## 2021/11/03
+
+Adapt the structure of part of the code,  
+it seems to be easier to read and adapt.
 
 
 ```
