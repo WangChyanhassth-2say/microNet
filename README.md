@@ -19,7 +19,7 @@ profile = summary(model, dummy_input)
 ## train on imagenet  
 using m1 as demo
 ```
-python3 -W ignore main.py --arch m1 -d ./imagenet/ -c ./output/m1
+CUDA_VISIBLE_DEVICES=0,1,2,3 python3 -W ignore main.py --arch m1 -d ./imagenet/ -c ./output/m1
 ```
 
 
@@ -75,10 +75,14 @@ The performance_test code was shown above.
 Update the DyShiftMax activation,  
 add lambdas and alphas on it.  
 the acc might rises but the mflops rise either.  
-for m1 as example, the mflops rises from 5.244M to 5.688M.
-
+for m1 as example, the Mult-Adds rises from 5.244M to 5.688M.
 
 ### Ready to put the model into training :)
+
+## 2021/11/06
+
+Fix some bugs encountered when we train on distributed parallel with the updated version.  
+
 
 # Citation
 ```
