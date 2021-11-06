@@ -56,7 +56,7 @@ Update the micronet.py, using the block_a, block_b, block_c to build the model a
 
 Our research shows that using dali-cpu may not help increasing the speed,  
 meanwhile using dali-gpu may run out of memory.  
-So updata the utils/dataloaders.py, using pytorch_only and cut the 'if' branch in main.py.
+So updata the utils/dataloaders.py, using pytorch only and cut the 'if' branch in main.py.
 
 
 ## 2021/11/03
