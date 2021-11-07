@@ -86,10 +86,10 @@ Fix some bugs encountered when we train on distributed parallel with the updated
 ## 2021/11/07
 
 ### Results:
-train m1 on imagenet_tiny  
+m1 on imagenet_tiny  
 Acc@1 55.385 Acc@5 78.714  
 
-train m1_updated on imagenet_tiny  
+m1_updated on imagenet_tiny  
 Acc@1 57.648 Acc@5 80.330
 
 
