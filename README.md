@@ -56,7 +56,7 @@ Update the micronet.py, using the block_a, block_b, block_c to build the model a
 
 Our research shows that using dali-cpu may not help increasing the speed,  
 meanwhile using dali-gpu may run out of memory.  
-So updata the utils/dataloaders.py, using pytorch only and cut the 'if' branch in main.py.
+So updata the utils/dataloaders.py, using pytorch_only and cut the 'if' branch in main.py.
 
 
 ## 2021/11/03
@@ -82,6 +82,15 @@ for m1 as example, the Mult-Adds rises from 5.244M to 5.688M.
 ## 2021/11/06
 
 Fix some bugs encountered when we train on distributed parallel with the updated version.  
+
+## 2021/11/07
+
+### Results:
+train m1 on imagenet_tiny  
+Acc@1 55.385 Acc@5 78.714  
+
+train m1_updated on imagenet_tiny  
+Acc@1 57.648 Acc@5 80.330
 
 
 # Citation
