@@ -86,11 +86,12 @@ Fix some bugs encountered when we train on distributed parallel with the updated
 ## 2021/11/07
 
 ### Results:
-m1 on imagenet_tiny  
-Acc@1 55.385 Acc@5 78.714  
+training on imagenet_t:  
 
-m1_updated on imagenet_tiny  
-Acc@1 57.648 Acc@5 80.330
+| Model | Param | MAdds | Acc@1 | Acc@5 |
+| ----- | ----- | ----- | ----- | ----- |
+| m1 | 1.699959M | 5.392237M | 55.385 | 78.714 |
+| m1_updated | 1.699959M | 5.688365M | 57.648 | 80.330 |
 
 
 # Citation
