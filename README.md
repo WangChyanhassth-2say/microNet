@@ -90,10 +90,9 @@ training on imagenet_t:
 
 | Model | Param | MAdds | Acc@1 | Acc@5 |
 | ----- | ----- | ----- | ----- | ----- |
-| ghostNet_width=0.1 | 1.442M | 6.911M |  |  |
-| ghostNet_width=0.2 | 1.652M | 12.301M |  |  |
 | microNet_m1 | 1.700M | 5.244M | 55.385 | 78.714 |
 | microNet_m1_updated | 1.700M | 5.688M | 57.648 | 80.330 |
+| ghostNet_width=0.1 | 1.442M | 6.911M |  |  |
 
 
 # Citation
