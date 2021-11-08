@@ -1,5 +1,5 @@
 # microNet
-microNet Reappearance and Adaption  
+microNet Recurrence and Adaption  
 mostly based on [liyunsheng13/micronet](https://github.com/liyunsheng13/micronet)  
 
 
