@@ -7,7 +7,7 @@ mostly based on [liyunsheng13/micronet](https://github.com/liyunsheng13/micronet
 you may code like this  
 ```
 import torch
-from micronet import micronet
+from micronet import *
 from torchsummaryX import summary
 
 model = micronet('m1')
@@ -19,7 +19,7 @@ profile = summary(model, dummy_input)
 ## train on imagenet  
 using m1 as demo
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3 python3 -W ignore main.py --arch m1 -d ./imagenet/ -c ./output/m1
+python3 -W ignore main.py --arch m1 -d ./imagenet -c ./output/m1
 ```
 
 
@@ -94,6 +94,12 @@ training on imagenet_t:
 | microNet_m1_updated | 1.700M | 5.688M | 57.648 | 80.330 |
 | ghostNet_width=0.1 | 1.442M | 6.911M | 51.407 | 78.538 |
 
+## 2021/11/30
+the loss of rvm_micronet is not good as expect,  
+so I try to rewrite the backbone of micronet.  
+add ghost_module, SE_module and so on...  
+the mflops even lighter than usual...  
+put it on the coeus later, hope it performs well.  
 
 # Citation
 ```
