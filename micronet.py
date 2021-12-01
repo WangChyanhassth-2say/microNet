@@ -122,24 +122,38 @@ def _make_divisible(v, divisor, min_value=None):
     return new_v
 
 class h_sigmoid(nn.Module):
-    def __init__(self, inplace=True):
+    def __init__(self):
         super(h_sigmoid, self).__init__()
-        self.relu = nn.ReLU6(inplace=inplace)
-        self.inplace = inplace
 
     def forward(self, x):
-        if self.inplace:
-            return x.add_(3.).clamp_(0., 6.).div_(6.)
-        else:
-            return F.relu6(x + 3.) / 6.
+        return F.relu6(x + 3.) / 6.
 
 class h_swish(nn.Module):
     def __init__(self, inplace=True):
         super(h_swish, self).__init__()
-        self.sigmoid = h_sigmoid(inplace=inplace)
+        self.sigmoid = h_sigmoid()
 
     def forward(self, x):
         return x * self.sigmoid(x)
+
+class SqueezeExcite(nn.Module):
+    def __init__(self, in_chs, se_ratio=0.25, reduced_base_chs=None,
+                 act_layer=nn.ReLU, gate_fn=h_sigmoid(), divisor=4, **_):
+        super(SqueezeExcite, self).__init__()
+        self.gate_fn = gate_fn
+        reduced_chs = _make_divisible((reduced_base_chs or in_chs) * se_ratio, divisor)
+        self.avg_pool = nn.AdaptiveAvgPool2d(1)
+        self.conv_reduce = nn.Conv2d(in_chs, reduced_chs, 1, bias=True)
+        self.act1 = act_layer(inplace=True)
+        self.conv_expand = nn.Conv2d(reduced_chs, in_chs, 1, bias=True)
+
+    def forward(self, x):
+        x_se = self.avg_pool(x)
+        x_se = self.conv_reduce(x_se)
+        x_se = self.act1(x_se)
+        x_se = self.conv_expand(x_se)
+        x = x * self.gate_fn(x_se)
+        return x
 
 class SwishLinear(nn.Module):
     def __init__(self, inp, oup):
@@ -371,7 +385,7 @@ class DYMicroBlock(nn.Module):
     def __init__(self, inp, oup, kernel_size=3, stride=1, ch_exp=(2, 2), ch_per_group=4, groups_1x1=(1, 1), depthsep=True, shuffle=False, pointwise='fft', activation_cfg=None):
         super(DYMicroBlock, self).__init__()
         self.identity = stride == 1 and inp == oup
-
+        
         y1, y2, y3 = activation_cfg.dy
         act = activation_cfg.MODULE
         act_max = activation_cfg.ACT_MAX
@@ -387,6 +401,7 @@ class DYMicroBlock(nn.Module):
 
         hidden_dim1 = inp * t1[0]
         hidden_dim2 = inp * t1[0] * t1[1]
+        self.se = SqueezeExcite(inp, se_ratio=0.25)
 
         if gs1[0] == 0:
             self.layers = nn.Sequential(
@@ -476,7 +491,7 @@ class DYMicroBlock(nn.Module):
                     expansion = True
                 ) if y2 > 0 else nn.ReLU6(inplace=True),
                 ChannelShuffle(hidden_dim2//4) if shuffle and y1!=0 and y2 !=0 else nn.Sequential() if y1==0 and y2==0 else ChannelShuffle(hidden_dim2//2),
-                get_pointwise_conv(pointwise, hidden_dim2, oup, hidden_fft, (g1, g2)), #FFTConv
+                get_pointwise_conv(pointwise, hidden_dim2, oup, hidden_fft, (g1, g2)),
                 get_act_layer(
                     oup,
                     oup,
@@ -499,6 +514,7 @@ class DYMicroBlock(nn.Module):
         out = self.layers(x)
 
         if self.identity:
+            out = self.se(out)
             out = out + identity
 
         return out
