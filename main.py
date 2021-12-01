@@ -25,9 +25,8 @@ import torchvision.models as models
 from utils import Logger, AverageMeter, accuracy, mkdir_p, savefig, larc
 from utils.dataloaders import *
 from utils.imagenet import ImageNet 
-from backbone import *
 from tensorboardX import SummaryWriter
-from micronet import micronet
+from micronet import *
 
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
 parser.add_argument('-d', '--data', metavar='DIR',
