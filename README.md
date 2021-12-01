@@ -16,7 +16,7 @@ profile = summary(model, dummy_input)
 ```
 or  
 ```
-python3 main.py
+python3 micronet.py
 ```
 
 ## train on imagenet  
