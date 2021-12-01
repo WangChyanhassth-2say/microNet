@@ -14,7 +14,10 @@ model = micronet('m1')
 dummy_input = torch.rand(32,3,224,224)
 profile = summary(model, dummy_input)
 ```
-
+or  
+```
+python3 main.py
+```
 
 ## train on imagenet  
 using m1 as demo
