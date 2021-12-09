@@ -46,7 +46,9 @@ preset = {
         'm2':
         ['MODEL.MICRONETS.BLOCK', 'DYMicroBlock', 'MODEL.MICRONETS.NET_CONFIG', 'msnx_dy9_exp6_12M_221', 'MODEL.MICRONETS.STEM_CH', '8', 'MODEL.MICRONETS.STEM_GROUPS', '4,2', 'MODEL.MICRONETS.STEM_DILATION', '1', 'MODEL.MICRONETS.STEM_MODE', 'spatialsepsf', 'MODEL.MICRONETS.OUT_CH', '1024', 'MODEL.MICRONETS.DEPTHSEP', 'True', 'MODEL.MICRONETS.POINTWISE', 'group', 'MODEL.MICRONETS.DROPOUT', '0.1', 'MODEL.ACTIVATION.MODULE', 'DYShiftMax', 'MODEL.ACTIVATION.ACT_MAX', '2.0', 'MODEL.ACTIVATION.LINEARSE_BIAS', 'False', 'MODEL.ACTIVATION.INIT_A_BLOCK3', '1.0,0.0', 'MODEL.ACTIVATION.INIT_A', '1.0,1.0', 'MODEL.ACTIVATION.INIT_B', '0.0,0.0', 'MODEL.ACTIVATION.REDUCTION', '8', 'MODEL.MICRONETS.SHUFFLE', 'True'],
         'm3':
-        ['MODEL.MICRONETS.BLOCK', 'DYMicroBlock', 'MODEL.MICRONETS.NET_CONFIG', 'msnx_dy12_exp6_20M_020', 'MODEL.MICRONETS.STEM_CH', '12', 'MODEL.MICRONETS.STEM_GROUPS', '4,3', 'MODEL.MICRONETS.STEM_DILATION', '1', 'MODEL.MICRONETS.STEM_MODE', 'spatialsepsf', 'MODEL.MICRONETS.OUT_CH', '1024', 'MODEL.MICRONETS.DEPTHSEP', 'True', 'MODEL.MICRONETS.POINTWISE', 'group', 'MODEL.MICRONETS.DROPOUT', '0.1', 'MODEL.ACTIVATION.MODULE', 'DYShiftMax', 'MODEL.ACTIVATION.ACT_MAX', '2.0', 'MODEL.ACTIVATION.LINEARSE_BIAS', 'False', 'MODEL.ACTIVATION.INIT_A_BLOCK3', '1.0,0.0', 'MODEL.ACTIVATION.INIT_A', '1.0,0.5', 'MODEL.ACTIVATION.INIT_B', '0.0,0.5', 'MODEL.ACTIVATION.REDUCTION', '8', 'MODEL.MICRONETS.SHUFFLE', 'True']
+        ['MODEL.MICRONETS.BLOCK', 'DYMicroBlock', 'MODEL.MICRONETS.NET_CONFIG', 'msnx_dy12_exp6_18M_020', 'MODEL.MICRONETS.STEM_CH', '12', 'MODEL.MICRONETS.STEM_GROUPS', '4,3', 'MODEL.MICRONETS.STEM_DILATION', '1', 'MODEL.MICRONETS.STEM_MODE', 'spatialsepsf', 'MODEL.MICRONETS.OUT_CH', '1024', 'MODEL.MICRONETS.DEPTHSEP', 'True', 'MODEL.MICRONETS.POINTWISE', 'group', 'MODEL.MICRONETS.DROPOUT', '0.1', 'MODEL.ACTIVATION.MODULE', 'DYShiftMax', 'MODEL.ACTIVATION.ACT_MAX', '2.0', 'MODEL.ACTIVATION.LINEARSE_BIAS', 'False', 'MODEL.ACTIVATION.INIT_A_BLOCK3', '1.0,0.0', 'MODEL.ACTIVATION.INIT_A', '1.0,0.5', 'MODEL.ACTIVATION.INIT_B', '0.0,0.5', 'MODEL.ACTIVATION.REDUCTION', '8', 'MODEL.MICRONETS.SHUFFLE', 'True'],
+        'm4':
+        ['MODEL.MICRONETS.BLOCK', 'DYMicroBlock', 'MODEL.MICRONETS.NET_CONFIG', 'msnx_dy12_exp6_20M_020', 'MODEL.MICRONETS.STEM_CH', '12', 'MODEL.MICRONETS.STEM_GROUPS', '4,3', 'MODEL.MICRONETS.STEM_DILATION', '1', 'MODEL.MICRONETS.STEM_MODE', 'spatialsepsf', 'MODEL.MICRONETS.OUT_CH', '1024', 'MODEL.MICRONETS.DEPTHSEP', 'True', 'MODEL.MICRONETS.POINTWISE', 'group', 'MODEL.MICRONETS.DROPOUT', '0.1', 'MODEL.ACTIVATION.MODULE', 'DYShiftMax', 'MODEL.ACTIVATION.ACT_MAX', '2.0', 'MODEL.ACTIVATION.LINEARSE_BIAS', 'False', 'MODEL.ACTIVATION.INIT_A_BLOCK3', '1.0,0.0', 'MODEL.ACTIVATION.INIT_A', '1.0,0.5', 'MODEL.ACTIVATION.INIT_B', '0.0,0.5', 'MODEL.ACTIVATION.REDUCTION', '8', 'MODEL.MICRONETS.SHUFFLE', 'True'],
         }
 
 
@@ -61,17 +63,19 @@ msnx_dy6_exp4_4M_221_cfgs = [
         [1, 1,  96, 3, 1, 4,  8,  8,  96,  8,  8, 2, 2, 1, 2], #64->64(3,16)->384 ->96(16,6)->96
         [1, 1, 384, 3, 1, 4, 12, 12,   0,  0,  0, 2, 2, 1, 2], #96->96(4,24)->576
 ]
+
 msnx_dy6_exp6_6M_221_cfgs = [
         #s, n,  c, ks, c1, c2, g1, g2, c3, g3, g4, y1, y2, y3, r
         #AABCCC
         [2, 1,   8, 3, 2, 2,  0,  6,   8,  2,  2, 2, 0, 1, 1],  #6->12(0, 0)->24  ->8(4,2)->8
         [2, 1,  16, 3, 2, 2,  0,  8,  16,  4,  4, 2, 2, 1, 1], #8->16(0, 0)->32  ->16(4,4)->16
         [2, 1,  16, 5, 2, 2,  0, 16,  16,  4,  4, 2, 2, 1, 1], #16->32(0, 0)->64  ->16(8,2)->16
-        [1, 1,  32, 5, 1, 6,  4,  4,  32,  4,  4, 2, 2, 1, 1], #16->16(2,8)->96 ->32(8,4)->32
+        [1, 1,  32, 5, 1, 6,  4,  4,  32,  4,  4, 2, 2, 1, 1],#16->16(2,8)->96 ->32(8,4)->32
         [2, 1,  64, 5, 1, 6,  8,  8,  64,  8,  8, 2, 2, 1, 1], #32->32(2,16)->192 ->64(12,4)->64
         [1, 1,  96, 3, 1, 6,  8,  8,  96,  8,  8, 2, 2, 1, 2], #64->64(3,16)->384 ->96(16,6)->96
         [1, 1, 576, 3, 1, 6, 12, 12,   0,  0,  0, 2, 2, 1, 2], #96->96(4,24)->576
 ]
+
 msnx_dy9_exp6_12M_221_cfgs = [
         #s, n,  c, ks, c1, c2, g1, g2, c3, g3, g4, y1, y2, y3, r
         #AABCCCCC
@@ -84,8 +88,9 @@ msnx_dy9_exp6_12M_221_cfgs = [
         [2, 1,  96, 5, 1, 6,  8,  8,  96,  8,  8, 2, 2, 1, 2], #64->64(4,12)->384 ->96(16,5)->96
         [1, 1, 128, 3, 1, 6, 12, 12, 128,  8,  8, 2, 2, 1, 2], #96->96(5,16)->576->128(16,8)->128
         [1, 1, 768, 3, 1, 6, 16, 16,   0,  0,  0, 2, 2, 1, 2], #128->128(4,32)->768
-        ]
-msnx_dy12_exp6_20M_020_cfgs = [
+]
+
+msnx_dy12_exp6_18M_020_cfgs = [
     #s, n,  c, ks, c1, c2, g1, g2, c3, g3, g4, y1, y2, y3, r
     #AABCCCCCCCC
     [2, 1,  16, 3, 2, 2,  0, 12,  16,  4,  4, 0, 2, 0, 1], #12->24(0, 0)->48  ->16(8,2)->16
@@ -99,6 +104,25 @@ msnx_dy12_exp6_20M_020_cfgs = [
     [2, 1, 120, 5, 1, 6, 10, 10, 120, 10, 10, 0, 2, 0, 2], #80->80(4,20)->480->128(16,8)->128
     [1, 1, 120, 5, 1, 6, 12, 12, 120, 10, 10, 0, 2, 0, 2], #120->128(4,32)->720->128(32,4)->120
     [1, 1, 144, 3, 1, 6, 12, 12, 144, 12, 12, 0, 2, 0, 2], #120->128(4,32)->720->160(32,5)->144
+    [1, 1, 864, 3, 1, 6, 12, 12,   0,  0,  0, 0, 2, 0, 2], #144->144(5,32)->864
+]
+
+msnx_dy12_exp6_20M_020_cfgs = [
+    #s, n,  c, ks, c1, c2, g1, g2, c3, g3, g4, y1, y2, y3, r
+    #AABCCCCCCCCCC
+    [2, 1,  16, 3, 2, 2,  0, 12,  16,  4,  4, 0, 2, 0, 1], #12->24(0, 0)->48  ->16(8,2)->16
+    [2, 1,  24, 3, 2, 2,  0, 16,  24,  4,  4, 0, 2, 0, 1], #16->32(0, 0)->64  ->24(8,3)->24
+    [1, 1,  24, 3, 2, 2,  0, 24,  24,  4,  4, 0, 2, 0, 1], #24->48(0, 0)->96  ->24(8,3)->24
+    [2, 1,  32, 5, 1, 6,  6,  6,  32,  4,  4, 0, 2, 0, 1], #24->24(2,12)->144  ->32(16,2)->32
+    [1, 1,  32, 5, 1, 6,  8,  8,  32,  4,  4, 0, 2, 0, 2], #32->32(2,16)->192 ->32(16,2)->32
+    [1, 1,  64, 5, 1, 6,  8,  8,  64,  8,  8, 0, 2, 0, 2],
+    [1, 1,  64, 5, 1, 6,  8,  8,  48,  8,  8, 0, 2, 0, 2], #32->32(2,16)->192 ->48(12,4)->48
+    [1, 1,  80, 5, 1, 6,  8,  8,  80,  8,  8, 0, 2, 0, 2], #48->48(3,16)->288 ->80(16,5)->80
+    [1, 1,  80, 5, 1, 6, 10, 10,  80,  8,  8, 0, 2, 0, 2], #80->80(4,20)->480->80(20,4)->80
+    [2, 1, 120, 5, 1, 6, 10, 10, 120, 10, 10, 0, 2, 0, 2], #80->80(4,20)->480->128(16,8)->128
+    [1, 1, 120, 5, 1, 6, 12, 12, 120, 10, 10, 0, 2, 0, 2], #120->128(4,32)->720->128(32,4)->120
+    [1, 1, 144, 3, 1, 6, 12, 12, 144, 12, 12, 0, 2, 0, 2], #120->128(4,32)->720->160(32,5)->144
+    [1, 1, 144, 3, 1, 6, 12, 12, 144, 12, 12, 0, 2, 0, 2],
     [1, 1, 864, 3, 1, 6, 12, 12,   0,  0,  0, 0, 2, 0, 2], #144->144(5,32)->864
 ]
 
@@ -196,6 +220,19 @@ class ChannelShuffle(nn.Module):
         out = x.view(b, -1, h, w)
         return out
 
+class ChannelShuffle2(nn.Module):
+    def __init__(self, groups):
+        super(ChannelShuffle2, self).__init__()
+        self.groups = groups
+    def forward(self, x):
+
+        b, c, h, w = x.size()
+        channels_per_group = c // self.groups
+        x = x.view(b, channels_per_group, self.groups, h, w)
+        x = torch.transpose(x, 1, 2).contiguous()
+        out = x.view(b, -1, h, w)
+        return out
+
 class SpatialSepConvSF(nn.Module):
     def __init__(self, inp, oups, kernel_size, stride):
         super(SpatialSepConvSF, self).__init__()
@@ -285,7 +322,7 @@ class DYShiftMax(nn.Module):
         squeeze = _make_divisible(inp // reduction, 4)
         if squeeze < 4:
             squeeze = 4
-
+        
         self.fc = nn.Sequential(
                 nn.Linear(inp, squeeze),
                 nn.ReLU(inplace=True),
@@ -318,7 +355,7 @@ class DYShiftMax(nn.Module):
 
         n2, c2, h2, w2 = x_out.size()
         x2 = x_out[:,self.index,:,:]
-
+        
         if self.exp == 4:
             a1, b1, a2, b2 = torch.split(y, self.oup, dim=1)
 
@@ -327,7 +364,7 @@ class DYShiftMax(nn.Module):
 
             b1 = b1 + self.init_b[0]
             b2 = b2 + self.init_b[1]
-
+            
             z1 = x_out * a1 + x2 * b1
             z2 = x_out * a2 + x2 * b2
 
@@ -385,7 +422,7 @@ class DYMicroBlock(nn.Module):
     def __init__(self, inp, oup, kernel_size=3, stride=1, ch_exp=(2, 2), ch_per_group=4, groups_1x1=(1, 1), depthsep=True, shuffle=False, pointwise='fft', activation_cfg=None):
         super(DYMicroBlock, self).__init__()
         self.identity = stride == 1 and inp == oup
-        
+         
         y1, y2, y3 = activation_cfg.dy
         act = activation_cfg.MODULE
         act_max = activation_cfg.ACT_MAX
@@ -420,7 +457,7 @@ class DYMicroBlock(nn.Module):
                     expansion = False
                 ) if y2 > 0 else nn.ReLU6(inplace=True),
                 ChannelShuffle(gs1[1]) if shuffle else nn.Sequential(),
-                ChannelShuffle(hidden_dim2//2) if shuffle and y2 !=0 else nn.Sequential(),
+                ChannelShuffle2(hidden_dim2//2) if shuffle and y2 !=0 else nn.Sequential(),
                 get_pointwise_conv(pointwise, hidden_dim2, oup, hidden_fft, (g1, g2)),
                 get_act_layer(
                     oup,
@@ -436,7 +473,7 @@ class DYMicroBlock(nn.Module):
                     expansion = False
                 ) if y3 > 0 else nn.Sequential(),
                 ChannelShuffle(g2) if shuffle else nn.Sequential(),
-                ChannelShuffle(oup//2) if shuffle and oup%2 == 0  and y3!=0 else nn.Sequential(),
+                ChannelShuffle2(oup//2) if shuffle and oup%2 == 0  and y3!=0 else nn.Sequential(),
             )
         elif g2 == 0:
             self.layers = nn.Sequential(
@@ -476,7 +513,6 @@ class DYMicroBlock(nn.Module):
                 ChannelShuffle(gs1[1]) if shuffle else nn.Sequential(),
                 DepthSpatialSepConv(hidden_dim2, (1, 1), kernel_size, stride) if depthsep else
                 DepthConv(hidden_dim2, hidden_dim2, kernel_size, stride),
-                nn.Sequential(),
                 get_act_layer(
                     hidden_dim2,
                     hidden_dim2,
@@ -490,7 +526,7 @@ class DYMicroBlock(nn.Module):
                     g = gs1,
                     expansion = True
                 ) if y2 > 0 else nn.ReLU6(inplace=True),
-                ChannelShuffle(hidden_dim2//4) if shuffle and y1!=0 and y2 !=0 else nn.Sequential() if y1==0 and y2==0 else ChannelShuffle(hidden_dim2//2),
+                ChannelShuffle2(hidden_dim2//4) if shuffle and y1!=0 and y2 !=0 else nn.Sequential() if y1==0 and y2==0 else ChannelShuffle2(hidden_dim2//2),
                 get_pointwise_conv(pointwise, hidden_dim2, oup, hidden_fft, (g1, g2)),
                 get_act_layer(
                     oup,
@@ -506,7 +542,7 @@ class DYMicroBlock(nn.Module):
                     expansion = False
                 ) if y3 > 0 else nn.Sequential(),
                 ChannelShuffle(g2) if shuffle else nn.Sequential(),
-                ChannelShuffle(oup//2) if shuffle and y3!=0 else nn.Sequential(),
+                ChannelShuffle2(oup//2) if shuffle and y3!=0 else nn.Sequential(),
             )
 
     def forward(self, x):
@@ -514,6 +550,7 @@ class DYMicroBlock(nn.Module):
         out = self.layers(x)
 
         if self.identity:
+            
             out = self.se(out)
             out = out + identity
 
@@ -637,7 +674,8 @@ if __name__ == '__main__':
 
     from torchsummaryX import summary
 
-    model = micronet('m1')
+    model = micronet('m4')
     dummy_input = torch.rand(32,3,224,224)
     profile = summary(model, dummy_input)
+
 
